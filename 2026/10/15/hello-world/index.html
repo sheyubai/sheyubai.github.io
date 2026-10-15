@@ -19,21 +19,24 @@
   <meta name="author" content="sheyubai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="记录 Windows 下安装 Hexo、配置 Fluid、编写文章和部署到 GitHub Pages 的完整过程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="从零搭建 Hexo 博客：Fluid 主题与 GitHub Pages 部署">
 <meta property="og:url" content="https://sheyubai.github.io/2026/10/15/hello-world/index.html">
 <meta property="og:site_name" content="Sheyubai Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="记录 Windows 下安装 Hexo、配置 Fluid、编写文章和部署到 GitHub Pages 的完整过程。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-10-15T13:16:43.204Z">
-<meta property="article:modified_time" content="2026-10-15T13:16:43.204Z">
+<meta property="article:published_time" content="2026-10-15T14:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-15T14:36:47.229Z">
 <meta property="article:author" content="sheyubai">
+<meta property="article:tag" content="Fluid">
+<meta property="article:tag" content="GitHub Pages">
+<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - Sheyubai Blog</title>
+  <title>从零搭建 Hexo 博客：Fluid 主题与 GitHub Pages 部署 - Sheyubai Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -302,7 +305,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="从零搭建 Hexo 博客：Fluid 主题与 GitHub Pages 部署"></span>
           
         </div>
 
@@ -318,7 +321,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-10-15 21:16" pubdate>
+        <time datetime="2026-10-15 22:00" pubdate>
           2026年10月15日 晚上
         </time>
       </span>
@@ -330,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          4.5k 字
         
       </span>
     
@@ -341,7 +344,7 @@
         
         
         
-          4 分钟
+          38 分钟
         
       </span>
     
@@ -380,24 +383,223 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">从零搭建 Hexo 博客：Fluid 主题与 GitHub Pages 部署</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <p>这篇文章记录我的博客搭建过程：用 Hexo 管理 Markdown 文章，使用 Fluid 主题展示页面，再通过 GitHub Pages 发布到网上。</p>
+<p>博客地址：<a href="https://sheyubai.github.io/">https://sheyubai.github.io</a>。</p>
+<p>下面的命令都在 Windows PowerShell 中执行，博客目录统一为 <code>E:\my_blog</code>，项目依赖统一使用 pnpm 管理。已完成的步骤不必重复执行，尤其不要重新初始化现有博客。</p>
+<h2 id="一、准备环境"><a href="#一、准备环境" class="headerlink" title="一、准备环境"></a>一、准备环境</h2><p>先安装：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a>：选择官网提供的 LTS 版本，安装时保留添加到 PATH 的选项。Hexo 8 要求 Node.js 至少为 20.19.0。</li>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/downloads/win">Git</a>：用于上传网页。</li>
+<li>可选：VS Code，用于编辑文章和配置。</li>
+</ul>
+<p>同时注册一个 <a target="_blank" rel="noopener" href="https://github.com/">GitHub</a> 账号。</p>
+<p>安装完成后重新打开 PowerShell，检查环境：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">node <span class="hljs-literal">-v</span><br>npm.cmd <span class="hljs-literal">-v</span><br>git <span class="hljs-literal">--version</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>安装 pnpm 和 Hexo 命令行工具：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm.cmd install <span class="hljs-literal">-g</span> pnpm@<span class="hljs-number">10</span> hexo<span class="hljs-literal">-cli</span><br>pnpm.cmd <span class="hljs-literal">-v</span><br>hexo.cmd version<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>这里通过 npm 安装全局工具，博客内部的依赖交给 pnpm。使用 <code>.cmd</code> 后缀可以避免 PowerShell 拦截同名 <code>.ps1</code> 脚本。</p>
+<h2 id="二、创建博客"><a href="#二、创建博客" class="headerlink" title="二、创建博客"></a>二、创建博客</h2><p>PowerShell 切换目录不需要 <code>/d</code>，直接写完整路径即可跨盘切换：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;E:\&quot;</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>首次创建时执行：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">hexo.cmd init my_blog <span class="hljs-literal">--no-install</span><br><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;E:\my_blog&quot;</span><br>pnpm.cmd install<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><code>--no-install</code> 表示先初始化文件，再自行使用 pnpm 安装依赖。目标应当是新目录或空目录。</p>
+<p>启动本地预览：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm.cmd exec hexo server<br></code></pre></td></tr></table></figure>
+
+<p>打开 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a>。终端保持运行，按 <code>Ctrl+C</code> 停止服务后再执行其他命令。</p>
+<p>常用文件和目录：</p>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_config.yml</code></td>
+<td>网站信息、主题选择、部署配置</td>
+</tr>
+<tr>
+<td><code>_config.fluid.yml</code></td>
+<td>Fluid 外观配置，安装主题后创建</td>
+</tr>
+<tr>
+<td><code>source/_posts/</code></td>
+<td>Markdown 文章</td>
+</tr>
+<tr>
+<td><code>source/img/</code></td>
+<td>自己添加的图片，可手动创建</td>
+</tr>
+<tr>
+<td><code>public/</code></td>
+<td>自动生成的网页，不直接在这里写文章</td>
+</tr>
+<tr>
+<td><code>package.json</code></td>
+<td>项目依赖和命令</td>
+</tr>
+<tr>
+<td><code>pnpm-lock.yaml</code></td>
+<td>依赖版本锁定文件，应当保留</td>
+</tr>
+</tbody></table>
+<h2 id="三、安装-Fluid-主题"><a href="#三、安装-Fluid-主题" class="headerlink" title="三、安装 Fluid 主题"></a>三、安装 Fluid 主题</h2><p>进入博客目录安装主题：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;E:\my_blog&quot;</span><br>pnpm.cmd add hexo<span class="hljs-literal">-theme-fluid</span><br></code></pre></td></tr></table></figure>
+
+<p>首次安装时复制配置：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Copy-Item</span> <span class="hljs-string">&quot;.\node_modules\hexo-theme-fluid\_config.yml&quot;</span> <span class="hljs-string">&quot;.\_config.fluid.yml&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果已经存在 <code>_config.fluid.yml</code>，不要重复复制，以免覆盖自己的设置。后续修改根目录这份文件，不修改 <code>node_modules</code> 内的主题配置。</p>
+<p>打开根目录 <code>_config.yml</code>，找到已有字段修改：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span><br></code></pre></td></tr></table></figure>
+
+<p>本次搭建时，直接调用 Hexo 曾出现 Fluid 依赖加载失败。补齐以下依赖后解决：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm.cmd add hexo<span class="hljs-literal">-util</span> @adobe/css<span class="hljs-literal">-tools</span> hexo<span class="hljs-literal">-pagination</span> moment nunjucks<br></code></pre></td></tr></table></figure>
+
+<p>这是本项目的修复措施，不表示所有环境都必须额外安装这些依赖。</p>
+<p>验证效果：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm.cmd exec hexo generate<br>pnpm.cmd exec hexo server<br></code></pre></td></tr></table></figure>
+
+<h2 id="四、修改网站信息和外观"><a href="#四、修改网站信息和外观" class="headerlink" title="四、修改网站信息和外观"></a>四、修改网站信息和外观</h2><h3 id="网站基本信息"><a href="#网站基本信息" class="headerlink" title="网站基本信息"></a>网站基本信息</h3><p>在根目录 <code>_config.yml</code> 中修改已有字段，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">舍予白的博客</span><br><span class="hljs-attr">subtitle:</span> <span class="hljs-string">记录生活与技术</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">分享学习笔记、技术心得和日常生活</span><br><span class="hljs-attr">keywords:</span> <span class="hljs-string">博客,</span> <span class="hljs-string">技术,</span> <span class="hljs-string">生活</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">sheyubai</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span><br><span class="hljs-attr">timezone:</span> <span class="hljs-string">Asia/Shanghai</span><br><span class="hljs-attr">url:</span> <span class="hljs-string">https://sheyubai.github.io</span><br></code></pre></td></tr></table></figure>
+
+<p>文案可以自行调整。冒号后保留空格，缩进使用空格而不是 Tab，不要重复添加同名字段。</p>
+<h3 id="Fluid-外观设置"><a href="#Fluid-外观设置" class="headerlink" title="Fluid 外观设置"></a>Fluid 外观设置</h3><p>在 <code>_config.fluid.yml</code> 中搜索相应区域：</p>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>navbar</code></td>
+<td>导航栏名称和菜单</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>首页背景图、标语</td>
+</tr>
+<tr>
+<td><code>about</code></td>
+<td>关于页头像、名字、介绍</td>
+</tr>
+<tr>
+<td><code>favicon</code></td>
+<td>浏览器标签页图标</td>
+</tr>
+<tr>
+<td><code>footer</code></td>
+<td>页脚内容</td>
+</tr>
+</tbody></table>
+<p>首页标语可以写：</p>
+<blockquote>
+<p>Another day, another reason to smile.</p>
+<p>新的一天，又有了微笑的理由。</p>
+</blockquote>
+<p>网站副标题和 Fluid 首页标语是不同配置。想修改首页显示的那句话，检查 Fluid 的 <code>index</code> 区域，并按照配置文件中的注释修改。</p>
+<h3 id="创建关于页"><a href="#创建关于页" class="headerlink" title="创建关于页"></a>创建关于页</h3><p>如果还没有关于页：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm.cmd exec hexo new page about<br></code></pre></td></tr></table></figure>
+
+<p>编辑 <code>source/about/index.md</code>：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 关于我<br><span class="hljs-section">layout: about</span><br><span class="hljs-section">---</span><br><br>你好，我是 sheyubai，欢迎来到我的博客！<br><br>这里记录我的学习、生活和一些有趣的想法。<br></code></pre></td></tr></table></figure>
+
+<h2 id="五、写文章"><a href="#五、写文章" class="headerlink" title="五、写文章"></a>五、写文章</h2><h3 id="用命令创建"><a href="#用命令创建" class="headerlink" title="用命令创建"></a>用命令创建</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;E:\my_blog&quot;</span><br>pnpm.cmd exec hexo new <span class="hljs-string">&quot;我的第一篇文章&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>编辑生成的 <code>source/_posts/我的第一篇文章.md</code> 即可。</p>
+<h3 id="直接新建-Markdown-文件"><a href="#直接新建-Markdown-文件" class="headerlink" title="直接新建 Markdown 文件"></a>直接新建 Markdown 文件</h3><p>也可以直接在 <code>source/_posts/</code> 下创建 <code>.md</code> 文件，例如 <code>我的日常.md</code>：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 我的日常<br>date: 2026-10-15 22:00:00<br>tags:<br><span class="hljs-bullet">  -</span> 日常<br>categories:<br><span class="hljs-section">  - 生活记录</span><br><span class="hljs-section">---</span><br><br>又是开心的一天！<br><br><span class="hljs-section">## 今天做了什么</span><br><br><span class="hljs-bullet">-</span> 搭建博客<br><span class="hljs-bullet">-</span> 写下第一篇文章<br><br><span class="hljs-strong">**希望以后能坚持记录。**</span><br></code></pre></td></tr></table></figure>
+
+<p>两行 <code>---</code> 之间是文章信息，后面是正文。日期按实际发布时间填写，使用 UTF-8 编码，确认文件不是 <code>.md.txt</code>。</p>
+<h3 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h3><p>将图片放在 <code>source/img/my-photo.jpg</code>，正文中写：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">![<span class="hljs-string">图片说明</span>](<span class="hljs-link">/img/my-photo.jpg</span>)<br></code></pre></td></tr></table></figure>
+
+<p>这个写法适用于本文部署到域名根目录的网站。不要把电脑上的 <code>E:\...</code> 路径直接当成网页图片地址。</p>
+<h2 id="六、部署到-GitHub-Pages"><a href="#六、部署到-GitHub-Pages" class="headerlink" title="六、部署到 GitHub Pages"></a>六、部署到 GitHub Pages</h2><h3 id="1-创建仓库"><a href="#1-创建仓库" class="headerlink" title="1. 创建仓库"></a>1. 创建仓库</h3><p>在 GitHub 创建公开仓库，名称填写：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">sheyubai.github.io<br></code></pre></td></tr></table></figure>
+
+<p>其他人参考本教程时，应替换为自己的 <code>GitHub用户名.github.io</code>，并同步修改后面的用户名和网址。</p>
+<p>本博客仓库：<a target="_blank" rel="noopener" href="https://github.com/sheyubai/sheyubai.github.io">https://github.com/sheyubai/sheyubai.github.io</a>。</p>
+<h3 id="2-安装部署插件"><a href="#2-安装部署插件" class="headerlink" title="2. 安装部署插件"></a>2. 安装部署插件</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;E:\my_blog&quot;</span><br>pnpm.cmd add hexo<span class="hljs-literal">-deployer-git</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-配置部署地址"><a href="#3-配置部署地址" class="headerlink" title="3. 配置部署地址"></a>3. 配置部署地址</h3><p>打开根目录 <code>_config.yml</code>，确认网址：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">url:</span> <span class="hljs-string">https://sheyubai.github.io</span><br></code></pre></td></tr></table></figure>
+
+<p>找到已有的 <code>deploy:</code>，替换为：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/sheyubai/sheyubai.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="4-生成并上传网页"><a href="#4-生成并上传网页" class="headerlink" title="4. 生成并上传网页"></a>4. 生成并上传网页</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm.cmd exec hexo clean<br>pnpm.cmd exec hexo generate<br>pnpm.cmd exec hexo deploy<br></code></pre></td></tr></table></figure>
+
+<p>首次上传若弹出 GitHub 登录窗口，按提示登录授权。</p>
+<p>如果提示 <code>Author identity unknown</code>，设置提交身份后重试。将邮箱占位文字换成自己的提交邮箱，也可以使用 GitHub 邮箱设置中提供的 noreply 地址：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git config <span class="hljs-literal">--global</span> user.name <span class="hljs-string">&quot;sheyubai&quot;</span><br>git config <span class="hljs-literal">--global</span> user.email <span class="hljs-string">&quot;你的GitHub提交邮箱&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>--global</code> 会设置当前用户所有 Git 仓库的默认身份，已经配置好就不必重复修改。</p>
+<h3 id="5-开启-Pages"><a href="#5-开启-Pages" class="headerlink" title="5. 开启 Pages"></a>5. 开启 Pages</h3><p>上传成功后进入仓库 <strong>Settings → Pages</strong>，设置：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>选择</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Source</td>
+<td>Deploy from a branch</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>gh-pages</td>
+</tr>
+<tr>
+<td>Folder</td>
+<td>&#x2F; (root)</td>
+</tr>
+</tbody></table>
+<p>点击 <strong>Save</strong>，通过仓库 Actions 页面查看发布状态。完成后访问：</p>
+<p><a href="https://sheyubai.github.io/">https://sheyubai.github.io</a></p>
+<p>网站托管在 GitHub，关闭电脑和 PowerShell 后仍然可以访问。<code>localhost:4000</code> 只是自己电脑上的预览地址。</p>
+<h2 id="七、以后如何更新"><a href="#七、以后如何更新" class="headerlink" title="七、以后如何更新"></a>七、以后如何更新</h2><p>日常流程：写文章或修改配置 → 保存 → 本地预览 → 生成 → 部署。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;E:\my_blog&quot;</span><br>pnpm.cmd exec hexo generate<br>pnpm.cmd exec hexo deploy<br></code></pre></td></tr></table></figure>
+
+<p>修改主题后显示异常，或删除文章后需要彻底重建，可以先清理：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm.cmd exec hexo clean<br>pnpm.cmd exec hexo generate<br>pnpm.cmd exec hexo deploy<br></code></pre></td></tr></table></figure>
+
+<p><code>hexo clean</code> 清理生成文件和缓存，不会删除 <code>source/_posts</code> 中的文章。</p>
+<p>这套部署方式上传的是生成后的网页。文章源文件、配置、<code>package.json</code> 和 <code>pnpm-lock.yaml</code> 需要另外备份，也可以使用单独的源码仓库保存。不要在用于发布网页的 <code>gh-pages</code> 分支手工维护文章源码。</p>
+<h2 id="八、这次遇到的问题"><a href="#八、这次遇到的问题" class="headerlink" title="八、这次遇到的问题"></a>八、这次遇到的问题</h2><h3 id="cd-d-无法切换目录"><a href="#cd-d-无法切换目录" class="headerlink" title="cd &#x2F;d 无法切换目录"></a>cd &#x2F;d 无法切换目录</h3><p><code>cd /d</code> 是 CMD 写法。PowerShell 直接执行：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;E:\my_blog&quot;</span><br><span class="hljs-built_in">pwd</span><br></code></pre></td></tr></table></figure>
+
+<p><code>pwd</code> 可以确认当前目录。</p>
+<h3 id="安装主题一直等待"><a href="#安装主题一直等待" class="headerlink" title="安装主题一直等待"></a>安装主题一直等待</h3><p>本次项目原本使用 pnpm，npm 安装时长时间重新解析大量依赖，沿用 pnpm 后安装完成：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm.cmd add hexo<span class="hljs-literal">-theme-fluid</span><br></code></pre></td></tr></table></figure>
+
+<p>这不代表所有卡顿都由同一原因引起。仍然失败时，应检查实际错误和网络情况，避免同时启动多次安装。</p>
+<h3 id="Cannot-find-module-‘hexo’"><a href="#Cannot-find-module-‘hexo’" class="headerlink" title="Cannot find module ‘hexo’"></a>Cannot find module ‘hexo’</h3><p>本次误进入过另一份目录 <code>E:\Project\my_blog</code>，那里缺少可用的本地 Hexo 依赖。实际配置好的博客位于：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;E:\my_blog&quot;</span><br>pnpm.cmd exec hexo version<br></code></pre></td></tr></table></figure>
+
+<p>如果是在新电脑上恢复源码，先在正确项目目录执行 <code>pnpm.cmd install</code>，不要不检查路径就删除依赖。</p>
+<h3 id="Fluid-提示-Cannot-find-module"><a href="#Fluid-提示-Cannot-find-module" class="headerlink" title="Fluid 提示 Cannot find module"></a>Fluid 提示 Cannot find module</h3><p>本次出现过 <code>@adobe/css-tools</code>、<code>hexo-util</code> 等模块加载失败。显式补齐主题使用的依赖后，直接调用 Hexo 和通过 pnpm 调用均验证通过：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm.cmd add hexo<span class="hljs-literal">-util</span> @adobe/css<span class="hljs-literal">-tools</span> hexo<span class="hljs-literal">-pagination</span> moment nunjucks<br>pnpm.cmd exec hexo generate<br></code></pre></td></tr></table></figure>
+
+<h3 id="网站访问-404"><a href="#网站访问-404" class="headerlink" title="网站访问 404"></a>网站访问 404</h3><p>检查仓库名称、<code>gh-pages</code> 分支是否上传成功，以及 Pages 是否选择该分支的根目录。再查看 Actions 的发布结果；本地上传成功后，GitHub 还需要完成网站发布。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/docs/github-pages">Hexo GitHub Pages 部署文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid 主题仓库</a></li>
+<li><a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Fluid 配置文档</a></li>
+</ul>
 
                 
               </div>
@@ -406,6 +608,38 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="category-chain-item">博客搭建</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
+      
+        <a href="/tags/Fluid/" class="print-no-link">#Fluid</a>
+      
+        <a href="/tags/GitHub-Pages/" class="print-no-link">#GitHub Pages</a>
+      
+    </div>
   
 </div>
 
@@ -415,7 +649,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
+      <div>从零搭建 Hexo 博客：Fluid 主题与 GitHub Pages 部署</div>
       <div>https://sheyubai.github.io/2026/10/15/hello-world/</div>
     </div>
     <div class="license-meta">
